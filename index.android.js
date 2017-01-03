@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 
 
-import setup from './app/setup';
+import StoryReader from './app/containers/app';
 
 
-AppRegistry.registerComponent('StoryReader', setup);
+AppRegistry.registerComponent('StoryReader',() => StoryReader);
