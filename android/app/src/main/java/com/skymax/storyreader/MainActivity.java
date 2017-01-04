@@ -1,4 +1,4 @@
-package com.storyreader;
+package com.skymax.storyreader;
 
 import com.facebook.react.ReactActivity;
 
