@@ -10,6 +10,7 @@ import {JestPage} from '../components/JestPage';
 import {ReactPage} from '../components/ReactPage';
 
 var ScrollableTabView = require('react-native-scrollable-tab-view');
+const Realm = require('realm');
 
 
 export default class StoryReader extends Component {
