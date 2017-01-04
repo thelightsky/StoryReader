@@ -13,7 +13,6 @@ var ScrollableTabView = require('react-native-scrollable-tab-view');
 
 
 export default class StoryReader extends Component {
-
     constructor(props) {
 	  super(props);
 	}
@@ -21,10 +20,10 @@ export default class StoryReader extends Component {
     render() {
 		return(
 			<ScrollableTabView>
-            <ReactPage tabLabel="React" />
-            <FlowPage tabLabel="Flow" />
-            <JestPage tabLabel="Jest" />
-        </ScrollableTabView>
+	            <ReactPage tabLabel="React" />
+	            <FlowPage tabLabel="Flow" />
+	            <JestPage tabLabel="Jest" />
+        	</ScrollableTabView>
 		)
 	}
 }

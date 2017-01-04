@@ -4,8 +4,6 @@ import {
   View
 } from 'react-native';
 
-
-
 export  class ReactPage extends Component{
 
     render()
