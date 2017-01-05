@@ -3,7 +3,7 @@ import { applyMiddleware, createStore, compose } from 'redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import {persistStore, autoRehydrate} from 'redux-persist';
-
+import reducers from '../reducers';
 //Create logger
 var isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent;
 var logger = createLogger({
