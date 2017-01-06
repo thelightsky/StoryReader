@@ -6,12 +6,28 @@ import { connect } from 'react-redux';
 
 
 import {FlowPage} from '../components/FlowPage';
-import {JestPage} from '../components/JestPage';
+import {ChapterDetailPage} from '../components/JestPage';
 import {ReactPage} from '../components/ReactPage';
+import {ChaptersPage} from '../components/StoryChapters';
 
 var ScrollableTabView = require('react-native-scrollable-tab-view');
 // const Realm = require('realm');
 
+class HomeComponent extends Component {
+    constructor(props) {
+	  super(props);
+	}
+
+    render() {
+		return(
+			
+			<ScrollableTabView>
+	            <ReactPage tabLabel="Trang chủ" />
+	            <FlowPage tabLabel="Yêu Thích" />
+        	</ScrollableTabView>
+		)
+	}
+}
 
 export default class StoryReader extends Component {
     constructor(props) {
@@ -20,11 +36,13 @@ export default class StoryReader extends Component {
 
     render() {
 		return(
-			<ScrollableTabView>
-	            <ReactPage tabLabel="React" />
-	            <FlowPage tabLabel="Flow" />
-	            <JestPage tabLabel="Jest" />
-        	</ScrollableTabView>
+			<Router>
+        <Scene key="root">
+          <Scene key="homeComponent" hideNavBar={true} component={HomeComponent} initial={true} />
+          <Scene key="chapterDetailPage" hideNavBar={false} component={ChapterDetailPage} title="Chương 1" />
+		  <Scene key="chaptersPage" hideNavBar={false} component={ChaptersPage} title="Chapters Page" />
+        </Scene>
+      </Router>
 		)
 	}
 }
