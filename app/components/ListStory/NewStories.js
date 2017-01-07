@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
+import BaseComponent from '../Base/BaseComponent'
 
 var DATA = [
     {tieude:"7 Vien Ngoc Rong",Author:"Sky",Id:0},
@@ -28,10 +29,8 @@ var DATA = [
     {tieude:"One Piece",Author:"Oda",Id:1},
     {tieude:"7 Vien Ngoc Rong GT",Author:"Sky",Id:2},
 ];
-export  class ReactPage extends Component{
-    constructor(props)
-    {
-        
+export  default class NewStories extends BaseComponent{
+    constructor(props){
         super(props);
         var ds = new ListView.DataSource({rowHasChanged:(r1,r2)=>r1!=r2});
 
@@ -39,10 +38,10 @@ export  class ReactPage extends Component{
             dataSource:ds.cloneWithRows(DATA)
         };
     }
-
-
-    createRow(property)
-    {
+    getTag(){
+        return "NewStories";
+    }
+    createRow(property){
         const gotoStory = () => Actions.chaptersPage({StoreyId:property.Id}); 
         return (
             <TouchableOpacity onPress={gotoStory}>
@@ -54,8 +53,7 @@ export  class ReactPage extends Component{
         );
     }
 
-    render()
-    {
+    render(){
         return(
                 <View> 
                     <ListView dataSource={this.state.dataSource} 

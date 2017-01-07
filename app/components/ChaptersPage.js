@@ -7,10 +7,11 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import BaseComponent from './Base/BaseComponent'
 
 
 
-export  class ChaptersPage extends Component{
+export  default class ChaptersPage extends BaseComponent{
     constructor(props)
     {
         
@@ -24,7 +25,9 @@ export  class ChaptersPage extends Component{
         };
     }
 
-
+    getTag(){
+        return "ChaptersPage";
+    }
    loadData(Id)
     {
         var DATA = [

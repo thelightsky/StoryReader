@@ -5,44 +5,31 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 
-import {FlowPage} from '../components/FlowPage';
-import {ChapterDetailPage} from '../components/JestPage';
-import {ReactPage} from '../components/ReactPage';
-import {ChaptersPage} from '../components/StoryChapters';
-
+import ChapterDetailPage from '../components/ChapterDetailPage';
+import ChaptersPage from '../components/ChaptersPage';
+import HomeView from '../components/HomeView'
 var ScrollableTabView = require('react-native-scrollable-tab-view');
 // const Realm = require('realm');
+import BaseComponent from '../components/Base/BaseComponent'
 
-class HomeComponent extends Component {
-    constructor(props) {
+
+
+export default class StoryReader extends BaseComponent {
+  constructor(props) {
 	  super(props);
 	}
-
-    render() {
-		return(
-			
-			<ScrollableTabView>
-	            <ReactPage tabLabel="Trang chủ" />
-	            <FlowPage tabLabel="Yêu Thích" />
-        	</ScrollableTabView>
-		)
-	}
-}
-
-export default class StoryReader extends Component {
-    constructor(props) {
-	  super(props);
-	}
-
-    render() {
+	getTag(){
+    return "StoryReader";
+  }
+  render() {
 		return(
 			<Router>
-        <Scene key="root">
-          <Scene key="homeComponent" hideNavBar={true} component={HomeComponent} initial={true} />
-          <Scene key="chapterDetailPage" hideNavBar={false} component={ChapterDetailPage} title="Chương 1" />
-		  <Scene key="chaptersPage" hideNavBar={false} component={ChaptersPage} title="Chapters Page" />
-        </Scene>
-      </Router>
+	      <Scene key="root">
+	        <Scene key="homeComponent" hideNavBar={true} component={HomeView} initial={true} />
+	        <Scene key="chapterDetailPage" hideNavBar={false} component={ChapterDetailPage} title="Chương 1" />
+			  	<Scene key="chaptersPage" hideNavBar={false} component={ChaptersPage} title="Chapters Page" />
+	      </Scene>
+	    </Router>
 		)
 	}
 }
