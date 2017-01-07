@@ -25,7 +25,7 @@ var DATA = [
     {tieude:"7 Vien Ngoc Rong Z",Author:"Sky",Id:3},
     {tieude:"7 Vien Ngoc Rong Z",Author:"Sky",Id:3},
     {tieude:"7 Vien Ngoc Rong Z",Author:"Sky",Id:3},
-     {tieude:"7 Vien Ngoc Rong",Author:"Sky",Id:0},
+    {tieude:"7 Vien Ngoc Rong",Author:"Sky",Id:0},
     {tieude:"One Piece",Author:"Oda",Id:1},
     {tieude:"7 Vien Ngoc Rong GT",Author:"Sky",Id:2},
 ];
@@ -41,13 +41,16 @@ export  default class NewStories extends BaseComponent{
     getTag(){
         return "NewStories";
     }
-    createRow(property){
-        const gotoStory = () => Actions.chaptersPage({StoreyId:property.Id}); 
+    gotoStory(data){
+        Actions.chaptersPage({StoreyId:data.Id}); 
+    }
+    createRow(rowData, sectionID, rowID, highlightRow){
+        // const gotoStory = () => Actions.chaptersPage({StoreyId:property.Id}); 
         return (
-            <TouchableOpacity onPress={gotoStory}>
-            <View>
-                <Text> {property.tieude} </Text>
-                <Text> {property.Author} </Text>
+            <TouchableOpacity onPress={(rowData)=> this.gotoStory(rowData)}>
+            <View style = {{ backgroundColor:'white',flexDirection: 'row', margin:10 }}>
+                <Text style = {{ backgroundColor:'white',flex:1  }}> {rowData.tieude} </Text>
+                <Text> {rowData.Author} </Text>
             </View>
             </TouchableOpacity>
         );
@@ -55,10 +58,10 @@ export  default class NewStories extends BaseComponent{
 
     render(){
         return(
-                <View> 
-                    <ListView dataSource={this.state.dataSource} 
-                    renderRow={this.createRow}/>
-                </View>
+            <View> 
+                <ListView dataSource={this.state.dataSource} 
+                renderRow={(rowData, sectionID, rowID, highlightRow)=> this.createRow(rowData, sectionID, rowID, highlightRow)}/>
+            </View>
         );
     }
 }
