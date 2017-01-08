@@ -1,14 +1,24 @@
-import Db from './Db/Db';    
-import DbHelper from './Db/DbHelper';
+  
+import database from './Db/DbHelper';
 
-class Queries {
+import Story from './Models/Story';
+
+export default class Queries {
 
     /* a typical query */
-    getStory() {
+    static getStory() {
         
-        let results = DbHelper.getInstance()
-            
-        results.ob
-        return results;
+        let stories = database.objects('Story');
+
+        return stories;
     }
+
+
+static AddStory(tit,au,pub) {
+
+        database.write(()=>{
+            database.create('Story', {title: 'abc', author: 'acb'});
+        });
+    }
+
 }

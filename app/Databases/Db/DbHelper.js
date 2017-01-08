@@ -1,26 +1,26 @@
 
 
-import Db from 'Db';
+import Realm from 'realm';
 import Chapter from '../Models/Chapter';
 import Story from '../Models/Story';
 
-class DbHelper {
 
-    modelSchema = [
+modelSchema = [
         Chapter,
         Story
     ];
 
-    instance = null;
-
-    getInstance() {
-        
-        if(instance == null) {
-           let realm = new Db({schema: modelSchema});
-           instance = realm;
-        }
-        return instance;
+var realm = new Realm({
+  schema: [Chapter,
+        Story],
+  schemaVersion: 5,
+  migration: function(oldRealm, newRealm) {
+    // only apply this change if upgrading to schemaVersion 1
+    if (oldRealm.schemaVersion < 1) {
+      
     }
+  }
+});
 
-    /* note: this is where you would also setInstance and define a constant, or other method for the instance path */
-}
+export default realm;//  Realm({schema: modelSchema});
+

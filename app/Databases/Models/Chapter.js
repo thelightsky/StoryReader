@@ -4,7 +4,7 @@ Chapter.schema = {
     name: 'Chapter',
     primaryKey: 'id',
     properties: {
-        storyId: {type: 'int'},
+        id:    'int',    // primary key
         content: 'string',
     }
 }

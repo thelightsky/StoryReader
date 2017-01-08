@@ -10,32 +10,15 @@ import { Actions } from 'react-native-router-flux';
 
 import BaseComponent from '../Base/BaseComponent'
 
-var DATA = [
-    {tieude:"7 Vien Ngoc Rong",Author:"Sky",Id:0},
-    {tieude:"One Piece",Author:"Oda",Id:1},
-    {tieude:"7 Vien Ngoc Rong GT",Author:"Sky",Id:2},
-    {tieude:"7 Vien Ngoc Rong Z",Author:"Sky",Id:3},
-    {tieude:"7 Vien Ngoc Rong Z",Author:"Sky",Id:3},
-    {tieude:"7 Vien Ngoc Rong Z",Author:"Sky",Id:3},
-    {tieude:"7 Vien Ngoc Rong Z",Author:"Sky",Id:3},
-    {tieude:"7 Vien Ngoc Rong Z",Author:"Sky",Id:3},
-    {tieude:"7 Vien Ngoc Rong Z",Author:"Sky",Id:3},
-    {tieude:"7 Vien Ngoc Rong Z",Author:"Sky",Id:3},
-    {tieude:"7 Vien Ngoc Rong Z",Author:"Sky",Id:3},
-    {tieude:"7 Vien Ngoc Rong Z",Author:"Sky",Id:3},
-    {tieude:"7 Vien Ngoc Rong Z",Author:"Sky",Id:3},
-    {tieude:"7 Vien Ngoc Rong Z",Author:"Sky",Id:3},
-    {tieude:"7 Vien Ngoc Rong",Author:"Sky",Id:0},
-    {tieude:"One Piece",Author:"Oda",Id:1},
-    {tieude:"7 Vien Ngoc Rong GT",Author:"Sky",Id:2},
-];
+import Queries from '../../Databases/Queries';
+
 export  default class NewStories extends BaseComponent{
     constructor(props){
         super(props);
         var ds = new ListView.DataSource({rowHasChanged:(r1,r2)=>r1!=r2});
 
         this.state={
-            dataSource:ds.cloneWithRows(DATA)
+            dataSource:ds.cloneWithRows(Queries.getStory())
         };
     }
     getTag(){
@@ -49,8 +32,8 @@ export  default class NewStories extends BaseComponent{
         return (
             <TouchableOpacity onPress={(rowData)=> this.gotoStory(rowData)}>
             <View style = {{ backgroundColor:'white',flexDirection: 'row', margin:10 }}>
-                <Text style = {{ backgroundColor:'white',flex:1  }}> {rowData.tieude} </Text>
-                <Text> {rowData.Author} </Text>
+                <Text style = {{ backgroundColor:'white',flex:1  }}> {rowData.title} </Text>
+                <Text> {rowData.author} </Text>
             </View>
             </TouchableOpacity>
         );
