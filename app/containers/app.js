@@ -29,6 +29,7 @@ export default class StoryReader extends BaseComponent {
 	        <Scene key="chapterDetailPage" hideNavBar={false} component={ChapterDetailPage} title="Chương 1" />
 			  	<Scene key="chaptersPage" hideNavBar={false} component={ChaptersPage} title="Chapters Page" />
 	      </Scene>
+	      <Scene key="root2" hideNavBar={false} component={ChaptersPage} title="Chapters Page" />
 	    </Router>
 		)
 	}

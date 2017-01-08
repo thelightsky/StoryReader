@@ -9,14 +9,12 @@ import {
 import { Actions } from 'react-native-router-flux';
 import BaseComponent from './Base/BaseComponent'
 
-
+var ds = new ListView.DataSource({rowHasChanged:(r1,r2)=>r1!=r2});
 
 export  default class ChaptersPage extends BaseComponent{
-    constructor(props)
-    {
+    constructor(props){
         
         super(props);
-        var ds = new ListView.DataSource({rowHasChanged:(r1,r2)=>r1!=r2});
 
 
         var Data = this.loadData(props.StoreyId);
@@ -28,8 +26,7 @@ export  default class ChaptersPage extends BaseComponent{
     getTag(){
         return "ChaptersPage";
     }
-   loadData(Id)
-    {
+   loadData(Id){
         var DATA = [
             {tieude:"Chương 1",ChapterId:0,storyId:Id},
             {tieude:"Chương 1",ChapterId:1,storyId:Id},
@@ -46,25 +43,21 @@ export  default class ChaptersPage extends BaseComponent{
             {tieude:"Chương 1",ChapterId:12,storyId:Id},
             
         ];
-
         return DATA;
     }
 
-    createRow(property)
-    {
+    createRow(property){
         const gotoChapter = () => Actions.chapterDetailPage({storyId:property.storyId,chapterId:property.ChapterId}); 
         return (
             <TouchableOpacity onPress={gotoChapter}>
-            <View>
+            <View style = {{ backgroundColor:'white',flexDirection: 'row', margin:10 }}>
                 <Text> {property.tieude} - {property.ChapterId}</Text>
-                
             </View>
             </TouchableOpacity>
         );
     }
 
-    render()
-    {
+    render(){
         return(
                 <View  style={{marginTop: 50}}> 
                     <ListView dataSource={this.state.dataSource} 
