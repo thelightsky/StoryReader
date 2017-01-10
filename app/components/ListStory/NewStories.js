@@ -6,6 +6,8 @@ import {
   TouchableHighlight,
   TouchableOpacity
 } from 'react-native';
+//import Realm from 'realm';
+
 import { Actions } from 'react-native-router-flux';
 
 import BaseComponent from '../Base/BaseComponent'
@@ -25,6 +27,8 @@ export  default class NewStories extends BaseComponent{
         return "NewStories";
     }
     gotoStory(data){
+        //console.log("database path = ",Realm.path)
+        //console.log("database defaultPath = ",Realm.defaultPath)
         Actions.chaptersPage({StoreyId:data.Id}); 
     }
     createRow(rowData, sectionID, rowID, highlightRow){
