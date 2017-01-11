@@ -6,9 +6,9 @@ Story.schema = {
     name: 'Story',
    
     properties: {
-      
+       
         title: 'string',
         author: {type: 'string', optional: true},
-        
+        chapters:{type: 'list', objectType: 'Chapter'},
     }
 }

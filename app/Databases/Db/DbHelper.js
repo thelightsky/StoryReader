@@ -13,7 +13,7 @@ modelSchema = [
 var realm = new Realm({
   schema: [Chapter,
         Story],
-  schemaVersion: 5,
+  schemaVersion: 8,
   migration: function(oldRealm, newRealm) {
     // only apply this change if upgrading to schemaVersion 1
     if (oldRealm.schemaVersion < 1) {
